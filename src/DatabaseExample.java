@@ -4,10 +4,6 @@ import java.sql.*;
 public class DatabaseExample {
     public static void main(String[] args) {
         Connection conn = null;
-        String user = "magnus";
-        JPasswordField pf = new JPasswordField();
-        JOptionPane.showConfirmDialog(null, pf, "password?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        String password = new String(pf.getPassword());
 
         // Set up connection to database
         try {
@@ -26,7 +22,7 @@ public class DatabaseExample {
 
         try {
             Statement stmt = conn.createStatement();
-            String SQLQuery = "SELECT * FROM book";
+            String SQLQuery = "SELECT * FROM rj28forum";
             ResultSet result = stmt.executeQuery(SQLQuery);
 
             ResultSetMetaData metadata = result.getMetaData();
@@ -40,9 +36,10 @@ public class DatabaseExample {
                 String output = "";
                 output += result.getInt("id") + ", " +
                         result.getString("title") + ", " +
-                        result.getString("author") + ", " +
-                        result.getDouble("price") + ", " +
-                        result.getInt("quantity");
+                        result.getString("content") + ", " +
+                        result.getTimestamp("createdAt") + ", " +
+                        result.getInt("AuthorId") + ", " +
+                        result.getInt("likes");
                 System.out.println(output);
             }
 
