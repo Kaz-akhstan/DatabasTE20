@@ -42,7 +42,6 @@ public class DatabaseExample {
                         result.getInt("likes");
                 System.out.println(output);
             }
-
             stmt.close();
             conn.close();
         } catch (SQLException e) {
