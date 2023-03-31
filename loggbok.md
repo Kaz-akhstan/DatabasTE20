@@ -3,3 +3,6 @@ Jag har börjat med att försöka koppla upp mot databasen och sedan printa ut d
 
 ## 30-03-2023
 Skapat forum GUI:t och jobbar just nu på viewen och modellen. 
+
+## 31-03-2023
+Jobbat på modellen och kontrollern, modellen kan nu ansluta till databasen.

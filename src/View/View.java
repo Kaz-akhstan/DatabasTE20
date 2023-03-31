@@ -39,4 +39,8 @@ public class View {
             }
         });
     }
+
+    public JPanel getPanel() {
+        return panel;
+    }
 }
