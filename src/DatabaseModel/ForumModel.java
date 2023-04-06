@@ -17,19 +17,12 @@ public class ForumModel {
         }
     }
 
-    public void getPosts()
+    public void retrievePosts()
     {
         try {
             Statement stmt = conn.createStatement();
             String SQLQuery = "SELECT * FROM rj28forum";
             ResultSet result = stmt.executeQuery(SQLQuery);
-
-            ResultSetMetaData metadata = result.getMetaData();
-
-            int numCols = metadata.getColumnCount();
-            for (int i = 1 ; i <= numCols ; i++) {
-                System.out.println(metadata.getColumnClassName(i));
-            }
 
             while (result.next()) {
                 Post p = new Post(result.getInt("id"), result.getString("title"), result.getString("content"), result.getTimestamp("createdAt"), result.getInt("AuthorId"), result.getInt("likes"));
@@ -42,6 +35,10 @@ public class ForumModel {
         }
     }
 
+    public ArrayList getPosts() {
+        return posts;
+    }
+
     public void login() {
 
     }
@@ -49,6 +46,10 @@ public class ForumModel {
     public static void main(String[] args) {
         ForumModel m = new ForumModel();
         m.connectToDatabase();
-        m.getPosts();
+        m.retrievePosts();
+        for (int i = 0; i < m.posts.size(); i++) {
+
+            System.out.println(m.posts.get(i).toString());
+        }
     }
 }

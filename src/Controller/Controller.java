@@ -1,9 +1,11 @@
 package Controller;
 
 import DatabaseModel.ForumModel;
+import DatabaseModel.Post;
 import View.View;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Controller {
     View v;
@@ -26,7 +28,17 @@ public class Controller {
         frame.setVisible(true);
     }
 
+    public void setPosts() {
+        m.getPosts();
+        v.setPosts(new JList(m.getPosts().toArray()));//FUNKAR INTE
+    }
+
     public static void main(String[] args) {
-        Controller c = new Controller(new View(), new ForumModel());
+        ForumModel m = new ForumModel();
+        m.connectToDatabase();
+        m.retrievePosts();
+        View v = new View();
+        Controller c = new Controller(v, m);
+        c.setPosts();
     }
 }

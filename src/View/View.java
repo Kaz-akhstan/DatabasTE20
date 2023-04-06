@@ -7,6 +7,11 @@ import java.awt.event.ActionListener;
 public class View {
     private JPanel panel;
     private JList posts;
+
+    public void setPosts(JList posts) {
+        this.posts = posts;
+    }
+
     private JButton openButton;
     private JButton loginButton;
     private JButton registerButton;
